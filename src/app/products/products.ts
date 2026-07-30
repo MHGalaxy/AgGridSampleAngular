@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef } from 'ag-grid-community';
-import { ProductService } from '../services/productService';
+import { ProductService } from '../services/product.service';
+import { myTheme } from '../themes/ag-grid-theme';
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [AgGridAngular],
-  templateUrl: './products.html'
+  templateUrl: './products.html',
 })
 export class ProductsComponent {
+  gridOptions = {
+    suppressMiddleClickScrolls: true, // default
+  };
 
   rowData: any[] = [];
 
@@ -17,11 +21,10 @@ export class ProductsComponent {
     sortable: true,
     filter: true,
     resizable: true,
-    floatingFilter: true
+    floatingFilter: true,
   };
 
   columnDefs: ColDef[] = [
-
     { field: 'id', width: 90, pinned: 'left' },
     { field: 'code', width: 120 },
     { field: 'name', width: 180 },
@@ -35,13 +38,13 @@ export class ProductsComponent {
     {
       field: 'price',
       width: 120,
-      valueFormatter: p => `$${p.value}`
+      valueFormatter: (p) => `$${p.value}`,
     },
 
     {
       field: 'cost',
       width: 120,
-      valueFormatter: p => `$${p.value}`
+      valueFormatter: (p) => `$${p.value}`,
     },
 
     { field: 'quantity', width: 120 },
@@ -56,41 +59,44 @@ export class ProductsComponent {
     {
       field: 'warranty',
       headerName: 'Warranty (Months)',
-      width: 170
+      width: 170,
     },
 
     {
       field: 'createdDate',
       headerName: 'Created',
-      width: 150
+      width: 150,
     },
 
     {
       field: 'updatedDate',
       headerName: 'Updated',
-      width: 150
+      width: 150,
     },
 
     {
       field: 'isActive',
-      width: 120
+      width: 120,
     },
 
     {
       field: 'status',
-      width: 120
+      width: 120,
     },
 
     {
       field: 'description',
-      width: 300
-    }
-
+      width: 300,
+    },
   ];
 
+  theme = myTheme;
+
   constructor(private productService: ProductService) {
-    this.productService.getProducts().subscribe(data => {
+    this.productService.getProducts().subscribe((data) => {
       this.rowData = data;
     });
   }
+
+  protected readonly myTheme = myTheme;
 }

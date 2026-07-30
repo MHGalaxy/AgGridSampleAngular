@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Product } from '../models/product';
+import { ProductModel } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  getProducts(): Observable<Product[]> {
+  getProducts(): Observable<ProductModel[]> {
 
-    const products: Product[] = [];
+    const products: ProductModel[] = [];
 
     for (let i = 1; i <= 100; i++) {
 

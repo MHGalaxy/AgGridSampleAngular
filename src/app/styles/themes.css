@@ -1,0 +1,47 @@
+.light.blue{
+
+  --bg-color:#EEF6FF;
+  --surface-color:white;
+  --text-color:#102A43;
+  --primary-color:#1976D2;
+}
+
+.dark.blue{
+
+  --bg-color:#0F172A;
+  --surface-color:#1E293B;
+  --text-color:white;
+  --primary-color:#60A5FA;
+}
+
+.light.brown{
+
+  --bg-color:#FFF8E7;
+  --surface-color:white;
+  --text-color:#5A3A22;
+  --primary-color:#8B5E3C;
+}
+
+.dark.brown{
+
+  --bg-color:#2B1B12;
+  --surface-color:#473126;
+  --text-color:white;
+  --primary-color:#C49A6C;
+}
+
+.light.purple{
+
+  --bg-color:#F3EEFF;
+  --surface-color:white;
+  --text-color:#432C72;
+  --primary-color:#7C4DFF;
+}
+
+.dark.purple{
+
+  --bg-color:#24163A;
+  --surface-color:#38224F;
+  --text-color:white;
+  --primary-color:#B388FF;
+}
