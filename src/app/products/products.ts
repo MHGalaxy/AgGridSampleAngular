@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef } from 'ag-grid-community';
 import { ProductService } from '../services/product.service';
-import { myTheme } from '../themes/ag-grid-theme';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-products',
@@ -90,13 +90,14 @@ export class ProductsComponent {
     },
   ];
 
-  theme = myTheme;
+  constructor(
+    private productService: ProductService,
+    public themeService: ThemeService
+  ) {
 
-  constructor(private productService: ProductService) {
-    this.productService.getProducts().subscribe((data) => {
+    this.productService.getProducts().subscribe(data => {
       this.rowData = data;
     });
   }
 
-  protected readonly myTheme = myTheme;
 }
