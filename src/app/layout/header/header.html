@@ -1,53 +1,52 @@
-<div style="padding:20px">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">AgGrid Sample</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            [routerLink]="['']"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active"
+             aria-current="page"
+             [routerLink]="['products']"
+             [routerLinkActive]="['active']"
+             [routerLinkActiveOptions]="{exact: true}"
+          >
+            Products
+          </a>
+        </li>
 
-  <label>
+      </ul>
+      <div class="d-flex">
 
-    Theme
+        <select class="form-select" (change)="changeMode($event)">
+          <option>Theme</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
 
-  </label>
+        <select class="form-select" (change)="changePalette($event)">
+          <option>Color</option>
+          <option value="blue">Blue</option>
+          <option value="brown">Brown</option>
+          <option value="purple">Purple</option>
+        </select>
 
-  <select (change)="changeMode($event)">
+      </div>
 
-    <option value="light">
+    </div>
+  </div>
+</nav>
 
-      Light
-
-    </option>
-
-    <option value="dark">
-
-      Dark
-
-    </option>
-
-  </select>
-
-  <label style="margin-left:20px">
-
-    Color
-
-  </label>
-
-  <select (change)="changePalette($event)">
-
-    <option value="blue">
-
-      Blue
-
-    </option>
-
-    <option value="brown">
-
-      Brown
-
-    </option>
-
-    <option value="purple">
-
-      Purple
-
-    </option>
-
-  </select>
-
-</div>
