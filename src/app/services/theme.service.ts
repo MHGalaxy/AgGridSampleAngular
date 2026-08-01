@@ -1,10 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { ThemeMode, ThemePalette, ThemeSettings } from '../models/theme.model';
 
-import {
-  Theme,
-  themeQuartz
-} from 'ag-grid-community';
+import { Theme, themeQuartz } from 'ag-grid-community';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +12,7 @@ export class ThemeService {
     palette: 'blue',
   };
 
-  readonly agGridTheme = signal<Theme>(
-    this.createGridTheme()
-  );
+  readonly agGridTheme = signal<Theme>(this.createBaseGridTheme());
 
   constructor() {
     this.applyTheme();
@@ -42,23 +37,15 @@ export class ThemeService {
 
     document.body.classList.add(this.theme.mode);
     document.body.classList.add(this.theme.palette);
-    this.agGridTheme.set(
-      this.createGridTheme()
-    );
+    this.agGridTheme.set(this.createBaseGridTheme());
   }
 
   private css(variable: string): string {
-
-    return getComputedStyle(document.body)
-      .getPropertyValue(variable)
-      .trim();
-
+    return getComputedStyle(document.body).getPropertyValue(variable).trim();
   }
 
-  private createGridTheme(): Theme {
-
+  private createBaseGridTheme(): Theme {
     return themeQuartz.withParams({
-
       accentColor: this.css('--primary-color'),
 
       backgroundColor: this.css('--surface-color'),
@@ -82,8 +69,10 @@ export class ThemeService {
       rowBorder: true,
 
       sidePanelBorder: true,
-
     });
+  }
 
+  createGridTheme(params?: any): Theme {
+    return this.agGridTheme().withParams(params ?? {});
   }
 }

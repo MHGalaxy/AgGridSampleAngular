@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ColDef } from 'ag-grid-community';
+import { ColDef, Theme } from 'ag-grid-community';
 import { ProductService } from '../services/product.service';
 import { ThemeService } from '../services/theme.service';
 
@@ -92,12 +92,19 @@ export class ProductsComponent {
 
   constructor(
     private productService: ProductService,
-    public themeService: ThemeService
+    public themeService: ThemeService,
   ) {
-
-    this.productService.getProducts().subscribe(data => {
+    this.productService.getProducts().subscribe((data) => {
       this.rowData = data;
     });
   }
 
+  gridTheme = computed(() => {
+    return this.themeService.createGridTheme({
+      fontSize: 14,
+      rowVerticalPaddingScale: 1.3,
+      borderRadius: 8,
+      columnBorder: true,
+    });
+  });
 }
