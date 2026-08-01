@@ -5,10 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
-  imports: [
-    RouterLink,
-    RouterLinkActive
-  ],
+  imports: [RouterLink, RouterLinkActive],
 })
 export class HeaderComponent {
   constructor(private theme: ThemeService) {}
